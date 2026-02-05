@@ -1,1 +1,59 @@
-Libr
+Library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+entity jk is 
+port (
+    j,k,clk: in std_logic;
+    Q:out std_logic_vector;
+);''
+
+architecture description of jk is
+ signal Qin : std_logic :='0'
+begin 
+  process (clk)
+  if risign_edge(clk) then
+    case j & k is
+    when "00" => Qin <= Qin,
+    when "01" => Q <= '1',
+    when "10" => Q <= '0',
+    when "11" => Qin <= notQin,
+    when other => Qin <= Qin;
+    end case;
+end process;
+  Q = Qin;
+end description;
+
+
+asynchron 
+
+Library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+entity jk is 
+port (
+    j,k,clk,set res: in std_logic;
+    Q:out std_logic_vector;
+);''
+
+architecture description of jk is
+ signal Qin : std_logic :='0'
+begin 
+  process (clk, set , res)
+  begin 
+  if set = '1' then 
+    Qin  <= '1';
+  else if res = '1' then 
+    Qin <= '0';
+  else if risign_edge(clk) then
+    case j & k is
+    when "00" => Qin <= Qin,
+    when "01" => Q <= '1',
+    when "10" => Q <= '0',
+    when "11" => Qin <= notQin,
+    when other => Qin <= Qin;
+    end case;
+end process;
+  Q = Qin;
+end description;
+
+
+
+
